@@ -4,9 +4,10 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron-forge start",
+    "package": "electron-forge package --platform=linux,win32 --arch=x64",
+    "make": "electron-forge make --platform=win32,linux --arch=x64"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
     "Electron",
     "quick",
@@ -16,19 +17,45 @@
   ],
   "author": "GitHub",
   "license": "CC0-1.0",
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
   "devDependencies": {
-    "electron": "^23.1.2",
-    "@electron-forge/cli" : "^6.0.5"
+    "@electron-forge/cli": "^6.0.5",
+    "@electron-forge/maker-deb": "^6.0.5",
+    "@electron-forge/maker-squirrel": "^6.0.5",
+    "@electron-forge/maker-zip": "^6.0.5",
+    "electron": "^23.1.2"
   },
   "build": {
-    "appId": "your.id",
-    "buildVersion" : "0.0.1",
-    "portable": {
-      "category": "your.app.category.type"
+    "appId": "Windson app Id",
+    "buildVersion": "0.0.1",
+    "win": {
+      "target": "portable"
     },
-    "rpm": {
-      "category": "your.app.category.type"
+    "linux": {
+      "target": "AppImage"
+    }
+  },
+  "postinstall": "electron-builder install-app-deps",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "win32"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "platforms": [
+            "linux"
+          ],
+          "config": {}
+        }
+      ]
     }
   }
-  
 }

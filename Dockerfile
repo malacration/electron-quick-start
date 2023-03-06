@@ -8,7 +8,11 @@ WORKDIR /usr/src/cache
 COPY package.json ./
 COPY package-lock.json ./
 RUN npm install
-
+RUN npm run make
+RUN npm install electron-builder
+RUN ls -l
+RUN npm run package
+RUN ls
 
 # Create and define the application's working directory.
 RUN mkdir /usr/src/app
