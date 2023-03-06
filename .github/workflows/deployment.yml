@@ -16,7 +16,10 @@ jobs:
       with:
         node-version: 18
     - run: npm install
-    - run: npm run make-win 
+    - if: matrix.os == 'windows-latest'
+      run: npm run make-win 
+    - if: matrix.os == 'ubuntu-latest'
+      run: npm run make-linux 
     - run: ls
       
       # - name: Step 3 - Use the Upload Artifact GitHub Action
