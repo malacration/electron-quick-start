@@ -18,8 +18,13 @@ jobs:
         uses: actions/setup-node@v3.6.0
         with:
           node-version: 18
-
-      - name: Package windows
-        uses: actions/setup-node@v3.6.0
-        with:
-          node-version: 18
+        run: |
+          npm install
+          npm run make 
+          ls
+      
+      # - name: Step 3 - Use the Upload Artifact GitHub Action
+      #   uses: actions/upload-artifact@v2
+      #   with: 
+      #     name: assets-for-download
+      #     path: downloads
