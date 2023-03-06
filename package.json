@@ -17,7 +17,8 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^23.1.2"
+    "electron": "^23.1.2",
+    "@electron-forge/cli" : "^6.0.5"
   },
   "build": {
     "appId": "your.id",
