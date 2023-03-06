@@ -7,10 +7,8 @@ jobs:
     runs-on: deployment
 
     steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v2
-
-      - name: Install Node.js, NPM and Yarn
+      - name: Install e Make Artifact
+        uses: actions/checkout@v3
         uses: actions/setup-node@v3.6.0
         with:
           node-version: 18
