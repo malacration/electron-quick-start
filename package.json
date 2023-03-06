@@ -18,5 +18,16 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^23.1.2"
+  },
+  "build": {
+    "appId": "your.id",
+    "buildVersion" : "0.0.1",
+    "windows": {
+      "category": "your.app.category.type"
+    },
+    "linux": {
+      "category": "your.app.category.type"
+    }
   }
+  
 }

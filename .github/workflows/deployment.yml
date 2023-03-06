@@ -18,13 +18,13 @@ jobs:
         uses: actions/setup-node@v3.6.0
         with:
           node-version: 18
-      
-      - name: Run install
+
+      - name: Add electron-builder
         uses: borales/actions-yarn@v4
         with:
-          cmd: install
+          cmd: yarn add electron-builder
 
       - name: Run install
         uses: borales/actions-yarn@v4
         with:
-          cmd: install electron-builder --linux
+          cmd: yarn app:dist
