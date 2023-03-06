@@ -7,14 +7,14 @@ jobs:
     runs-on: deployment
 
     steps:
-    - name: Install e Make Artifact
-      uses: actions/checkout@v3
-      uses: actions/setup-node@v3.6.0
-      with:
-        node-version: 18
-    - run: npm install
-    - run: npm run make-win 
-    - run: ls
+      - name: Install e Make Artifact
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3.6.0
+        with:
+          node-version: 18
+      - run: npm install
+      - run: npm run make-win 
+      - run: ls
       
       # - name: Step 3 - Use the Upload Artifact GitHub Action
       #   uses: actions/upload-artifact@v2
