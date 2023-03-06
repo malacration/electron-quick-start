@@ -19,12 +19,13 @@ jobs:
         with:
           node-version: 18
 
-      - name: Add electron-builder
-        uses: borales/actions-yarn@v4
+      - name: Build/release Electron app
+        uses: wenwuwu/action-electron-forge@v1.4.0
         with:
-          cmd: add electron-builder
+          # GitHub token, automatically provided to the action
+          # (No need to define this secret in the repo settings)
+          github_token: ${{ secrets.github_token }}
 
-      - name: Run install
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: app:dist
+          # If the commit is tagged with a version (e.g. "v1.0.0"),
+          # release the app after building
+          release: ${{ startsWith(github.ref, 'refs/tags/v') }}

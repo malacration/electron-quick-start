@@ -22,10 +22,10 @@
   "build": {
     "appId": "your.id",
     "buildVersion" : "0.0.1",
-    "windows": {
+    "portable": {
       "category": "your.app.category.type"
     },
-    "linux": {
+    "rpm": {
       "category": "your.app.category.type"
     }
   }
