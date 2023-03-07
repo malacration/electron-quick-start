@@ -1,6 +1,8 @@
 name: Build/release
 
-on: push
+on:
+  release:
+    types: [published]
 
 jobs:
   release:
@@ -27,8 +29,17 @@ jobs:
         npm run make-linux
         mkdir -p ./downloads && cp ./out/make/deb/x64/* ./downloads
       
-    - name: Step 3 - Use the Upload Artifact GitHub Action
-      uses: actions/upload-artifact@v3
-      with: 
-        name: ${{matrix.os}}
-        path: downloads
+    # - name: Step 3 - Use the Upload Artifact GitHub Action
+    #   uses: actions/upload-artifact@v3
+    #   with: 
+    #     name: ${{matrix.os}}
+    #     path: downloads
+
+    - name: Upload Release Asset
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          asset_path: ./downloads
+          asset_name: ${{matrix.os}}
