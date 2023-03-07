@@ -32,7 +32,7 @@ jobs:
         echo "file=filename" >> $GITHUB_ENV
     
     - run: |
-        file=(`ls `) && echo $file
+        file=(`ls ./downloads `) && echo $file
         echo "file=$file" >> $GITHUB_ENV
 
     - name: Release
