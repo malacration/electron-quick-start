@@ -33,13 +33,11 @@ jobs:
     
     - run: |
         file=(`ls ./downloads `) && echo "./downloads/$file"
-        echo "file=$file" >> $GITHUB_ENV
-
+        echo "new=$file" >> $GITHUB_ENV
     - name: Release
       uses: softprops/action-gh-release@v1
-      if: startsWith(github.ref, 'refs/tags/')
       with:
-        files: ${{ env.file }}
+        files: ${{ env.new }}
       
     # - name: Step 3 - Use the Upload Artifact GitHub Action
     #   uses: actions/upload-artifact@v3
