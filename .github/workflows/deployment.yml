@@ -29,15 +29,13 @@ jobs:
       run: |
         npm run make-linux
         mkdir -p ./downloads && cp ./out/make/deb/x64/* ./downloads
-        echo "file=filename" >> $GITHUB_ENV
-    
     - run: |
         file=`ls ` && echo "./downloads/$file"
-        echo "new=$file" >> $GITHUB_ENV
+        echo "file=$file" >> $GITHUB_ENV
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
-        files: ${{ env.new }}
+        files: ${{ env.file }}
       
     # - name: Step 3 - Use the Upload Artifact GitHub Action
     #   uses: actions/upload-artifact@v3
