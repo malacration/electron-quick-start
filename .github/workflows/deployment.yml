@@ -17,12 +17,15 @@ jobs:
         node-version: 18
     - run: npm install
     - if: matrix.os == 'windows-latest'
-      run: npm run make-win 
+      run: |
+        npm run make-win
+        ls ./out/make
+        mkdir -p ./download && cp ./out/make/win/x64/* ./download
+    
     - if: matrix.os == 'ubuntu-latest'
-      run: npm run make-linux 
-    - run: ls ./out
-    - run: cp ./out/make/deb/x64/* ./download
-    - run: cp ./out/make/win/x64/* ./download
+      run: |
+        npm run make-linux
+        mkdir -p ./download && cp ./out/make/deb/x64/* ./download
       
     - name: Step 3 - Use the Upload Artifact GitHub Action
       uses: actions/upload-artifact@v2
