@@ -20,12 +20,12 @@ jobs:
       run: |
         npm run make-win
         ls ./out/make/zip/win32
-        mkdir -p ./download && cp ./out/make/zip/win32/x64/* ./download
+        mkdir -p ./downloads && cp ./out/make/zip/win32/x64/* ./downloads
     
     - if: matrix.os == 'ubuntu-latest'
       run: |
         npm run make-linux
-        mkdir -p ./download && cp ./out/make/deb/x64/* ./download
+        mkdir -p ./downloads && cp ./out/make/deb/x64/* ./downloads
       
     - name: Step 3 - Use the Upload Artifact GitHub Action
       uses: actions/upload-artifact@v2
