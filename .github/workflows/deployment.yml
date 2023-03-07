@@ -30,7 +30,7 @@ jobs:
         npm run make-linux
         mkdir -p ./downloads && cp ./out/make/deb/x64/* ./downloads
     - run: |
-        file=`ls ` && echo "./downloads/$file"
+        file=`ls ./downloads` && echo "./downloads/$file"
         echo "file=$file" >> $GITHUB_ENV
     - name: Release
       uses: softprops/action-gh-release@v1
