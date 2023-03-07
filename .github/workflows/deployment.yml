@@ -19,8 +19,8 @@ jobs:
     - if: matrix.os == 'windows-latest'
       run: |
         npm run make-win
-        ls ./out/make
-        mkdir -p ./download && cp ./out/make/win/x64/* ./download
+        ls ./out/make/zip
+        mkdir -p ./download && cp ./out/make/zip/x64/* ./download
     
     - if: matrix.os == 'ubuntu-latest'
       run: |
